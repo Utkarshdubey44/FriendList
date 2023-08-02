@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  devise_for :users
   # resorces
   # get 'personal_details/index'
   # get 'personal_details/show'
