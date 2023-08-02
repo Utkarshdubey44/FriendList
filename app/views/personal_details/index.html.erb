@@ -1,2 +1,22 @@
-<h1>PersonalDetails#index</h1>
-<p>Find me in app/views/personal_details/index.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<h1>Personal Details</h1>
+<%= link_to "New detail", new_personal_detail_path %>
+
+<table cellpadding="3%">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+
+    <div id="personal_details">
+        <% @personal_details.each do |personal_detail| %>
+            <%= render personal_detail %>
+        <% end %>
+    </div>
+</table>
+
+

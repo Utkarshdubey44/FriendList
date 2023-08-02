@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   # resorces
   # get 'personal_details/index'
   # get 'personal_details/show'
@@ -6,8 +7,9 @@ Rails.application.routes.draw do
   # get 'personal_details/edit'
   # get 'personal_details/destroy'
 
-  root 'personal_details/index', as: 'personal_details'
-  resources :products
+  resources :personal_details
+  root 'personal_details#index', as: 'details'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

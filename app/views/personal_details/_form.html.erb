@@ -1,0 +1,37 @@
+<%= form_with(model: @personal_detail, local: true) do |form| %>
+  <div class="row mb-3 col-4">
+    <% if @personal_detail.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @personal_detail.errors.each do |error| %>
+            <li><%= error.full_message %> </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-2">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-2">
+      <%= form.label :gender %>
+      <%= form.text_field :gender, class: "form-control" %>
+    </div>
+    <div class="mb-2">
+      <%= form.label :phone %>
+      <%= form.number_field :phone, class: "form-control" %>
+    </div>
+    <div class="mb-2">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: "form-control" %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+  </div>
+
+    
+<% end %>
