@@ -1,2 +1,27 @@
-<h1>PersonalDetails#show</h1>
-<p>Find me in app/views/personal_details/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+<% if @personal_detail.present?%>
+
+    <p>
+    <strong>Name: </strong>
+    <%= @personal_detail.name %>
+    </p>
+
+    <p>
+    <strong>Phone: </strong>
+    <%= @personal_detail.phone %>
+    </p>
+    <p>
+    <strong>Gender: </strong>
+    <%= @personal_detail.gender %>
+    </p>
+    <p>
+    <strong>Description: </strong>
+    <%= @personal_detail.description %>
+    </p>
+
+    <%= link_to 'Edit', edit_personal_detail_path(@personal_detail) %> |
+    <%= link_to 'Main Menu', personal_details_path %> | 
+    <%= button_to "Destroy this detail", @personal_detail, method: :delete, class:"btn btn-danger"  %>
+<% else %>
+    <%= link_to 'Main Menu', personal_details_path %>
+<% end %>

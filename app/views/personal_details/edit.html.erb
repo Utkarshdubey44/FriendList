@@ -1,2 +1,9 @@
-<h1>PersonalDetails#edit</h1>
-<p>Find me in app/views/personal_details/edit.html.erb</p>
+<h1>Editing Detail</h1>
+
+<%= render 'form', detail: @personal_detail %>
+
+<br>
+<div>
+<%= link_to 'Show', @personal_detail %> |
+<%= link_to 'Back', personal_details_path %>
+</div>
