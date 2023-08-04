@@ -1,17 +1,27 @@
 <% if flash[:warning] %>
-  <div class="alert alert-info mt-4" role="alert">
-    <%= flash[:notice] %>
+  <div class="alert alert-warning alert-dismissible fade show mr-0" role="alert">
+    <%= flash[:warning] %>  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 <% end %>
 
 <% if flash[:alert] %>
-  <div class="alert alert-warning mt-4" role="alert">
-    <%= flash[:alert] %>
+  <div class="alert alert-info alert-dismissible fade show mr-0" role="alert">
+    <%= flash[:alert] %>  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 <% end %>
 
 <% if flash[:notice] %>
-  <div class="alert alert-success mt-4" role="alert">
-    <%= flash[:notice] %>
+
+  <div class="alert alert-success alert-dismissible fade show mr-0" role="alert">
+    <%= flash[:notice] %>  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 <% end %>
