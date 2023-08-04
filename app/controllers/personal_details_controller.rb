@@ -1,9 +1,10 @@
 class PersonalDetailsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_personal_detail, only: %i[ show edit update destroy ]
 
 
   def index
-    @personal_details = PersonalDetail.all
+    @personal_details = current_user.personal_details.all
   end
 
   
@@ -12,7 +13,7 @@ class PersonalDetailsController < ApplicationController
 
 
   def new
-    @personal_detail = PersonalDetail.new
+    @personal_detail = current_user.personal_details.new
   end
 
 
@@ -20,7 +21,7 @@ class PersonalDetailsController < ApplicationController
   end
 
   def create
-    @personal_detail = PersonalDetail.new(personal_detail_params)
+    @personal_detail = current_user.personal_details.new(personal_detail_params)
 
     respond_to do |format|
       if @personal_detail.save
@@ -47,14 +48,18 @@ class PersonalDetailsController < ApplicationController
     @personal_detail.destroy
 
     respond_to do |format|
-      format.html { redirect_to personal_details_url, notice: "Personal detail was successfully deleted." }
+      format.html { redirect_to personal_details_path, notice: "Personal detail was successfully deleted." }
     end
   end
 
   private
 
     def set_personal_detail
-      @personal_detail = PersonalDetail.find(params[:id])
+      begin
+        @personal_detail = current_user.personal_details.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        render :index, alert: 'Personal detail not found.' # Redirect to an appropriate page or handle the situation differently.
+      end
     end
 
     def personal_detail_params
