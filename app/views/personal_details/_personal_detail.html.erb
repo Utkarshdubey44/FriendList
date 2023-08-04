@@ -5,9 +5,10 @@
         <td> <%= personal_detail.phone %>  </td>
         <td> <%= personal_detail.description %>  </td>
         <td> 
-            <a class="btn btn-primary" href="/personal_details/<%=personal_detail.id%>" role="button">Show</a> | 
-            <a class="btn btn-info" href="<%= edit_personal_detail_path(personal_detail)%>" role="button">Edit</a> |
-            <%= button_to "Delete" ,personal_detail, method: :delete, class:"btn btn-danger" %>
-    
+            <div class="btn-group">
+                <a class="btn btn-primary mr-2" href="<%= personal_detail_path(personal_detail) %>" role="button">Show</a>
+                <a class="btn btn-info mr-2" href="<%= edit_personal_detail_path(personal_detail)%>" role="button">Edit</a> 
+                <%= button_to "Delete", personal_detail, method: :delete,data: { confirm: 'Are you sure?'}, class:"btn btn-danger"  %>
+            </div>
         </td> 
     </tr>

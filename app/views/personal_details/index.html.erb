@@ -1,9 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="mb-2">Personal Details</h1>
 
-<h1>Personal Details</h1>
-<%= link_to "New detail", new_personal_detail_path %>
-
-<table cellpadding="3%">
+<table cellpadding="3%" class="table-striped mb-4">
     <tr>
         <th>Name</th>
         <th>Gender</th>
@@ -14,9 +11,23 @@
 
     <div id="personal_details">
         <% @personal_details.each do |personal_detail| %>
-            <%= render personal_detail %>
+            <tr>
+                <td> <%= personal_detail.name %>  </td>
+                <td> <%= personal_detail.gender %>  </td>
+                <td> <%= personal_detail.phone %>  </td>
+                <td> <%= personal_detail.description %>  </td>
+                <td> 
+                    <div class="btn-group">
+                        <a class="btn btn-primary mr-2" href="<%= personal_detail_path(personal_detail) %>" role="button">Show</a>
+                        <a class="btn btn-info mr-2" href="<%= edit_personal_detail_path(personal_detail)%>" role="button">Edit</a> 
+                        <%= button_to "Delete", personal_detail, method: :delete,data: { confirm: 'Are you sure?'}, class:"btn btn-danger"  %>
+                    </div>
+                </td> 
+            </tr>
         <% end %>
     </div>
-</table>
+</table> 
+
+<%= link_to "New detail", new_personal_detail_path %>
 
 
